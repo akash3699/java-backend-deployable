@@ -1,22 +1,22 @@
 # download the required node base image
-FROM akash3699/akash-tomcat-springmvc
+FROM tomcat
 
 # copy all the files including node_modules directory
-#COPY DacAug2019.war /usr/local/webapps
+COPY DacAug2019.war /usr/local/webapps
 
 
-#MAINTAINER  Akash Wadhawane <akash3699@gmail.com>
+MAINTAINER  Akash Wadhawane <akash3699@gmail.com>
 
-#RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 
-#RUN apt-get -y update
+RUN apt-get -y update
 
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y 
 
-#ENV JAVA_VER 8
-#ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV JAVA_VER 8
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-#RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /etc/apt/sources.list && \
+RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /etc/apt/sources.list && \
     echo 'deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /etc/apt/sources.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C2518248EEA14886 && \
     apt-get update && \
@@ -25,11 +25,11 @@ FROM akash3699/akash-tomcat-springmvc
     apt-get clean && \
     rm -rf /var/cache/oracle-jdk${JAVA_VER}-installer
 
-#RUN update-java-alternatives -s java-8-oracle
+RUN update-java-alternatives -s java-8-oracle
 
-#RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> ~/.bashrc
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> ~/.bashrc
 
-#RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
 
