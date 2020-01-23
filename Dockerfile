@@ -18,7 +18,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 RUN apt clean
 
-RUN update-java-alternatives -s java-8-oracle
 
 RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> ~/.bashrc
 
