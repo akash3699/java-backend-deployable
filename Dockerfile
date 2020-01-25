@@ -4,18 +4,13 @@ FROM tomcat
 # copy all the files including node_modules directory
 #COPY DacAug2019.war /usr/local/webapps
 
-
-MAINTAINER  Akash Wadhawane <akash3699@gmail.com>
-
-RUN apt-get update && apt-get install -y software-properties-common
-
-ADD DacAug2019.war /usr/local/webapps
+COPY DacAug2019.war /usr/local/tomcat/webapps/
 
 
 
 # EXPOSE PORT 8080
 EXPOSE 8080
-
+RUN sh /usr/local/tomcat/catalina.sh run &
 # RUN: executes the command(s) while starting the container
 # start the apache
-CMD tomcat -D FOREGROUND
+#CMD tomcat -D FOREGROUND
